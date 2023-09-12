@@ -1,5 +1,6 @@
 //pesquisarCep recebe uma arrow Function
 const pesquisarCep = async () => {
+limparCampos();   
 
     const cep = document.getElementById('cep').value;
 
@@ -24,7 +25,7 @@ const pesquisarCep = async () => {
         }
         
     } else {
-        document.getElementById('logradouro').value = 'C.E.P. nao encontrado!';
+        document.getElementById('logradouro').value = 'Digitaçao invalida!';
     }
 
 }
@@ -49,3 +50,11 @@ const eNumero = (numero) => /^[0-9]+$/.test(numero);
 // escuta todos os eventos relacionados ao controle  mencionado no Id, neste caso escuta o evento focus (quando o controle perde o foco), nesse momento ele aciona a funçao.
 
 document.getElementById('cep').addEventListener('focusout', pesquisarCep);  
+
+const limparCampos = (endereco) => {
+    document.getElementById('bairro').value = '';
+    document.getElementById('cidade').value = '';
+    document.getElementById('estado').value = '';
+}
+
+// => esta seta e uma forma diferente de escrever uma funçao 
