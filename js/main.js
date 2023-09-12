@@ -15,8 +15,13 @@ const pesquisarCep = async () => {
 
         const dados = await fetch(url);
         const endereco = await dados.json();
-        if (endereco)
+
+        if (endereco.hasOwnProperty('erro')){  
+            //caso o cep informado nao esteja no banco de dados do link,  ele vai dar erro e informar que nao foi localizado
+            document.getElementById('logradouro').value = 'C.E.P. nao localizado!';
+        } else {
             preencheFormulario(endereco);
+        }
         
     } else {
         document.getElementById('logradouro').value = 'C.E.P. nao encontrado!';
